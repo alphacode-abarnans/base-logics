@@ -2,13 +2,12 @@
 
 import {IButton} from "./interface/IButton"
 
-const Button = (props: IButton) => {
-    const {action, Skin, disabled, loading} = props
+export const Button = (props: IButton) => {
+    const {action, Skin, disabled, loading, ...restProps} = props
 
     return (
         <div
-            role="button"
-            tabIndex={0}
+            {...restProps}
             className='inline-block cursor-default'
             onClick={() => {
                 if (!disabled) action.onClick()
@@ -24,5 +23,3 @@ const Button = (props: IButton) => {
         </div>
     )
 }
-
-export default Button

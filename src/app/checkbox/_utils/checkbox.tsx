@@ -1,6 +1,6 @@
 'use client'
 import React, { ComponentType } from 'react';
-interface SkinProps {value:string}
+interface SkinProps {value:string,disabled:boolean}
 interface CheckboxProps {id: string; checked: boolean; onChange: (checked: boolean) => void; disabled?: boolean, Skin: ComponentType<SkinProps>}
 
 const Checkbox: React.FC<CheckboxProps> = ({ id, checked, onChange, disabled = false, Skin }) => {
@@ -19,7 +19,7 @@ const Checkbox: React.FC<CheckboxProps> = ({ id, checked, onChange, disabled = f
       />
 
       <label htmlFor={id}>
-        <Skin value={checked? 'checked' : 'not_checked'}/>
+        <Skin value={checked? 'checked' : 'not_checked'} disabled={disabled}/>
       </label>
       
     </div>
