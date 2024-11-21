@@ -58,7 +58,9 @@ export default function Page ()  {
           disabled={true}
         />
 
-
+          <Checkbox id={'1'} checked={isChecked} onChange={setIsChecked} Skin={toggle} disabled={false}/> <br/> <br/>
+          <Checkbox id={'disabled-1'} checked={false} onChange={() => {
+          }} Skin={toggle} disabled={true}/> <br/> <br/>
         {/* Uncomment this block if needed */}
         {/* <AccessibleButton onClick={() => {}}>
           <Checkbox
