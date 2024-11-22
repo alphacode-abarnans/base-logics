@@ -1,5 +1,9 @@
 import type { Metadata } from "next"
 import "./globals.css"
+import '../../public/runtime.css'
+import defaultTheme from '../../default-theme.json'
+import { replacePlaceholders } from "@/services/StyleService"
+import { ThemeProvider } from "@/context/ThemeContext"
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -11,11 +15,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const updatedConfig = replacePlaceholders(defaultTheme);
   return (
     <html lang="en">
       <body>
-        {children}
+        <ThemeProvider config={updatedConfig}>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
 }
+

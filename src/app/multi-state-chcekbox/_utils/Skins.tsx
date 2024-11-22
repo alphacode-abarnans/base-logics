@@ -1,4 +1,5 @@
 import React from 'react'
+import { useConfig } from '@/context/ThemeContext';
 
 interface ComponentProps {
     value: string;
@@ -6,17 +7,17 @@ interface ComponentProps {
 }
 
 export const MultiStateButton = ({value,onClick}:ComponentProps) => {
+    const config = useConfig();
+
     const theme = value == 'A' ?
-                    "bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus:ring-blue-300"
+                    config.theme.input.button.primary
                     :
-                    value == 'B' ?
-                        "bg-green-500 hover:bg-green-600 active:bg-green-700 focus:ring-green-300"
-                        :
-                        "bg-red-500 hover:bg-red-600 active:bg-red-700 focus:ring-red-300"
+                    value == 'B' ? config.theme.input.button.secondary : config.theme.input.button.danger
     return (
         <button 
-            className={`${theme}text-white font-medium py-2 px-4 rounded focus:outline-none focus:ring m-2`}
+            className={`${theme}`}
             onClick={() => onClick(value)}
+            id='item1'
         >
             {value}
         </button>
@@ -36,24 +37,15 @@ export const CustomSkin = ({value,onClick}:ComponentProps) => (
 
 
 export const TriStateSkin = ({value,onClick}:ComponentProps) => {
-    const indeterminateStyles = {
-        '--tw-ring-color': 'transparent',
-        boxShadow: 'inset 0 0 0 0.25rem rgba(0, 0, 0, 0.1)',
-    };
+    const config = useConfig();
     const theme = value == 'unchecked' ?
-                    "border-gray-400 rounded-sm bg-white"
+                    config.theme.input.checkBox.unchecked
                     :
-                    value == 'checked' ?
-                        "border-blue-600 rounded-sm bg-blue-600 checked:bg-blue-600"
-                        :
-                        "border-gray-400 rounded-sm bg-white"
-
-
+                    value == 'checked' ? config.theme.input.checkBox.checked : config.theme.input.checkBox.indeterminate
 
     return (
         <div 
-            className={`${theme} w-10 h-10 m-2 border-2 appearance-none cursor-pointer`} 
-            style={value == 'indeterminate' ? indeterminateStyles : {}}
+            className={`${theme}`} 
             onClick={() => onClick(value)}
         >
         </div>
