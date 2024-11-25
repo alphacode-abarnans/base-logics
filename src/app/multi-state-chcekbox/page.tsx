@@ -1,17 +1,45 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MultiStateRadioBox from './_utils/MultiStateRadioBox'
 import { CustomSkin, MultiStateButton, TriStateSkin, wallSwitch } from './_utils/Skins';
 import MultiStateCheckBox from './_utils/MultiStateCheckBox';
-
-
-
+import defaultTheme from './../../../default-theme.json';
+import { useConfig } from '@/context/ThemeContext';
+import { replacePlaceholders } from '@/services/StyleService';
 
 const Page = () => {
+    const config = useConfig();
     const [currentValue, setCurrentValue] = useState('A');
     const [currentValue2, setCurrentValue2] = useState('Good');
     const [currentValue3, setCurrentValue3] = useState('checked');
     const [currentValue4, setCurrentValue4] = useState('checked');
+    const [selectedTheme, setSelectedTheme] = useState('default');
+
+    useEffect(() => {
+        const downloadTheme = async (name:string) => {
+            await fetch(`/api/theme?name=${name}`)
+                    .then(async (response) => {
+                        if (response.ok) {
+                            const newTheme = await response.json();
+                            const updatedConfig = replacePlaceholders(newTheme); 
+                            config.setTheme(updatedConfig); 
+                        } else {
+                        console.error('Failed to fetch new theme:', await response.json());
+                        }
+                    })
+                    .catch((err) => {
+                        console.error('Error downloading or applying theme:', err);
+                    });
+            
+        }
+
+        if(selectedTheme == 'default') {
+            const updatedConfig = replacePlaceholders(defaultTheme);
+            config.setTheme(updatedConfig)
+        }else{
+            downloadTheme(selectedTheme);
+        }
+    }, [selectedTheme])
 
     const onChange = (val:string) => {
         setCurrentValue(val);
@@ -31,7 +59,13 @@ const Page = () => {
 
     return (
         <div>
-            <div className='mb-2'>
+            <label htmlFor="theme">Choose a theme:</label>
+            <select name="theme" id="theme" value={selectedTheme} onChange={(e) => setSelectedTheme(e.target.value)}>
+                <option value="default">Default Theme</option>
+                <option value="new-theme">New Theme</option>
+                <option value="dark-theme">Dark Theme</option>
+            </select> 
+            <div className='mb-2 mt-10'>
                 <MultiStateRadioBox 
                     dataSource={['A', 'B', 'C']} 
                     value={currentValue} 

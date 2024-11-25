@@ -1,0 +1,24 @@
+{
+    "theme": "default-theme",
+    "variant": "light",
+    "version": "1.0.0",
+    "button": {
+        "text": "text-base font-medium font-normal text-white capitalize text-pretty",
+        "padding": "p-4",
+        "border": "border-4 border-current",
+        "borderRadius": "rounded-sm"
+    },
+    "checkBox": "w-10 h-10 m-2 border-2 appearance-none cursor-pointer",
+    "input" : {
+        "button": {
+            "primary" : "{{button.text}} {{button.padding}} {{button.border}} {{button.borderRadius}} bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus:ring-blue-300",
+            "secondary" : "{{button.text}} {{button.padding}} {{button.border}} {{button.borderRadius}} bg-green-500 hover:bg-green-600 active:bg-green-700 focus:ring-green-300",
+            "danger" : "{{button.text}} {{button.padding}} {{button.border}} {{button.borderRadius}} bg-red-500 hover:bg-red-600 active:bg-red-700 focus:ring-red-300"
+        },
+        "checkBox": {
+            "checked" : "{{checkBox}} border-blue-600 rounded-sm bg-blue-600 checked:bg-blue-600",
+            "unchecked" : "{{checkBox}} border-gray-400 rounded-sm bg-white",
+            "indeterminate" : "{{checkBox}} border-cyan-400 rounded-sm bg-cyan-400"
+        }
+    }
+}

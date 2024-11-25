@@ -1,5 +1,9 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from "next"
+import "./globals.css"
+import '../../public/runtime.css'
+import defaultTheme from '../../default-theme.json'
+import { replacePlaceholders } from "@/services/StyleService"
+import { ThemeProvider } from "@/context/ThemeContext"
 import DirectionToggle from "./Component/DirectionToggle";
 
 export const metadata: Metadata = {
@@ -12,12 +16,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const updatedConfig = replacePlaceholders(defaultTheme);
   return (
     <html lang="en">
       <body>
-        <DirectionToggle />
-        {children}
+        <ThemeProvider config={updatedConfig}>
+          <DirectionToggle />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
 }
+
