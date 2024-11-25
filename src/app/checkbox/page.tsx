@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import Checkbox from './_utils/checkbox';
 import { toggle, wallswitch } from './_utils/checkboxSkin';
+import ResizableComponent from '@/components/ResizableComponent';
 // import withA11y from '../Component/withA11Y';
 // import HocDiv from '../button/HocButton';
 
@@ -19,7 +20,7 @@ export default function Page ()  {
     const [selectedOption, setSelectedOption] = useState<any>("toggle");
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleChange = (e:any) => {
-      setSelectedOption(e.target.value); // Update state on selection
+      setSelectedOption(e.target.value);
     };
   return (
     <div className="p-5">
@@ -49,13 +50,12 @@ export default function Page ()  {
       />
       <div className="mt-4 space-y-4">
 
-
         <Checkbox
           id="1"
           checked={isChecked}
           onChange={setIsChecked}
           Skin={selectedOption=="toggle" ? toggle : wallswitch}
-          disabled={true}
+          disabled={false}
         />
 
           <Checkbox id={'1'} checked={isChecked} onChange={setIsChecked} Skin={toggle} disabled={false}/> <br/> <br/>
@@ -70,6 +70,7 @@ export default function Page ()  {
             Skin={switcher}
           />
         </AccessibleButton> */}
+        <ResizableComponent />
       </div>
     </div>
   </div>
