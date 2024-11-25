@@ -15,11 +15,17 @@ export interface Loading {
 export interface SkinProps {
     disabled: boolean
     loading?: Loading
+    width?: number
+    height?: number
 }
 
 export interface IButton {
-    Skin: ComponentType<SkinProps>
-    action: Action
-    disabled: boolean
-    loading?: Loading
+    id: string,
+    Skin: ComponentType<SkinProps>,
+    action: Action,
+    disabled: boolean,
+    loading?: Loading,
+    changedClassNames?: string,
+    width?: number
+    height?: number
 }
