@@ -30,6 +30,7 @@ const Checkbox: React.FC<CheckboxProps> = ({ id, checked, onChange, disabled = f
                 onClick={() => { onChange(!checked); }}
                 disabled={disabled}
                 className='sr-only'
+                // style={{display:'none'}}
             />
 
             <label htmlFor={id}>
