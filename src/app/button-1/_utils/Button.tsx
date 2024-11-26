@@ -2,13 +2,14 @@
 
 import {IButton} from "./interface/IButton"
 
-export const Button = (props: IButton) => {
-    const {action, Skin, disabled, loading, ...restProps} = props
+export const Button = (props: IButton & React.HTMLAttributes<HTMLElement>) => {
+    const {action, id, Skin, disabled, loading,width,height, ...restProps} = props
 
     return (
         <div
             {...restProps}
-            className='inline-block cursor-default'
+            id={id}
+            className='cursor-default'
             onClick={() => {
                 if (!disabled) action.onClick()
             }}
@@ -19,7 +20,12 @@ export const Button = (props: IButton) => {
                 if (!disabled && action.onRightClick) action.onRightClick()
             }}
         >
-            <Skin disabled={disabled} loading={loading}/>
+            {restProps["aria-describedby"] && (
+                <span id={`${id}`} className="sr-only">
+                    {restProps["aria-describedby"]}
+                </span>
+            )}
+            <Skin disabled={disabled} loading={loading} width={width} height={height}/>
         </div>
     )
 }

@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import React from 'react';
 
 interface WithA11yProps {
@@ -7,7 +6,6 @@ interface WithA11yProps {
   dir?:string;
 }
 
-// The HoC function
 function withA11y<T extends object>(
   WrappedComponent: React.ComponentType<T>,
   a11yProps: WithA11yProps

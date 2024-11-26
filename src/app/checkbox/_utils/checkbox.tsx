@@ -9,8 +9,8 @@ const Checkbox: React.FC<CheckboxProps> = ({ id, checked, onChange, disabled = f
     <div>
 
       <input 
-        type="checkbox" 
         id={id} 
+        type="checkbox" 
         name='checkbox-x'
         defaultChecked={checked} 
         onClick={() => {onChange(!checked); console.log('target',checked); }} 

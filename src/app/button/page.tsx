@@ -45,7 +45,7 @@ const ButtonExample = () => {
     )
 }
 
-export const ButtonSkin1 = () => {
+const ButtonSkin1 = () => {
     return (
         <span className="mx-2 rounded-md bg-gray-200 py-2 px-4 font-medium text-gray-800 hover:bg-gray-300">
             Button 1
