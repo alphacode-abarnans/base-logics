@@ -1,8 +1,13 @@
 'use client'
 import React, { useState } from 'react'
-import Checkbox from './_utils/checkbox';
+
 import { toggle, wallswitch } from './_utils/checkboxSkin';
 import ResizableComponent from '@/components/ResizableComponent';
+import CheckboxSample from './_utils/checkbox';
+import Checkbox from '@/components/input/Checkbox/Checkbox.logic';
+import { checkboxUiFalse, checkboxUiTrue } from '@/components/input/Checkbox/Checkbox.ui';
+
+
 // import withA11y from '../Component/withA11Y';
 // import HocDiv from '../button/HocButton';
 
@@ -50,7 +55,7 @@ export default function Page ()  {
       />
       <div className="mt-4 space-y-4">
 
-        <Checkbox
+        <CheckboxSample
           id="1"
           checked={isChecked}
           onChange={setIsChecked}
@@ -58,9 +63,13 @@ export default function Page ()  {
           disabled={false}
         />
 
-          <Checkbox id={'1'} checked={isChecked} onChange={setIsChecked} Skin={toggle} disabled={false}/> <br/> <br/>
-          <Checkbox id={'disabled-1'} checked={false} onChange={() => {
-          }} Skin={toggle} disabled={true}/> <br/> <br/>
+        <Checkbox id={'1'} 
+        checked={isChecked} 
+        onChange={setIsChecked} 
+        size={'xl'}
+        Skin={isChecked ? checkboxUiTrue : checkboxUiFalse } 
+        disabled={false}/> <br/> <br/>
+         
         {/* Uncomment this block if needed */}
         {/* <AccessibleButton onClick={() => {}}>
           <Checkbox
