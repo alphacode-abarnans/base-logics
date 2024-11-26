@@ -1,19 +1,19 @@
 {
-    "theme": "dark-theme",
-    "variant": "dark",
+    "theme": "new-theme",
+    "variant": "yellow",
     "version": "1.0.1",
     "button": {
         "text": "text-base font-medium font-normal text-white capitalize text-pretty",
-        "padding": "p-2",
+        "padding": "p-4",
         "border": "border-4 border-current",
-        "borderRadius": "rounded-lg"
+        "borderRadius": "rounded-sm"
     },
     "checkBox": "w-10 h-10 m-2 border-2 appearance-none cursor-pointer",
     "input" : {
         "button": {
-            "primary" : "{{button.text}} {{button.padding}} {{button.border}} {{button.borderRadius}} bg-green-400 hover:bg-green-600 active:bg-green-700 focus:ring-green-300",
-            "secondary" : "{{button.text}} {{button.padding}} {{button.border}} {{button.borderRadius}} bg-purple-400 hover:bg-purple-600 active:bg-purple-700 focus:ring-purple-300",
-            "danger" : "{{button.text}} {{button.padding}} {{button.border}} {{button.borderRadius}} bg-pink-400 hover:bg-pink-600 active:bg-pink-700 focus:ring-pink-300"
+            "primary" : "{{button.text}} {{button.padding}} {{button.border}} {{button.borderRadius}} bg-teal-500 hover:bg-teal-600 active:bg-teal-700 focus:ring-teal-300",
+            "secondary" : "{{button.text}} {{button.padding}} {{button.border}} {{button.borderRadius}} bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 focus:ring-yellow-300",
+            "danger" : "{{button.text}} {{button.padding}} {{button.border}} {{button.borderRadius}} bg-amber-500 hover:bg-amber-600 active:bg-amber-700 focus:ring-amber-300"
         },
         "checkBox": {
             "checked" : "{{checkBox}} border-blue-600 rounded-sm bg-blue-600 checked:bg-blue-600",

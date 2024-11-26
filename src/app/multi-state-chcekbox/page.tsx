@@ -1,18 +1,22 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import MultiStateRadioBox from './_utils/MultiStateRadioBox'
-import { CustomSkin, MultiStateButton, TriStateSkin, wallSwitch } from './_utils/Skins';
-import MultiStateCheckBox from './_utils/MultiStateCheckBox';
+// import { CustomSkin, TriStateSkin, wallSwitch } from './_utils/Skins';
+import { MultiStateButton } from './_utils/Skins';
+// import MultiStateCheckBox from './_utils/MultiStateCheckBox';
 import defaultTheme from './../../../default-theme.json';
 import { useConfig } from '@/context/ThemeContext';
 import { replacePlaceholders } from '@/services/StyleService';
+import RadioLogic from '@/components/input/Radio/Radio.logic';
+import {RadioUiHtml, RadioUiSvg} from '@/components/input/Radio/Radio.ui';
 
 const Page = () => {
     const config = useConfig();
     const [currentValue, setCurrentValue] = useState('A');
-    const [currentValue2, setCurrentValue2] = useState('Good');
-    const [currentValue3, setCurrentValue3] = useState('checked');
-    const [currentValue4, setCurrentValue4] = useState('checked');
+    // const [currentValue2, setCurrentValue2] = useState('Good');
+    // const [currentValue3, setCurrentValue3] = useState('checked');
+    // const [currentValue4, setCurrentValue4] = useState('checked');
+    const [currentValue5, setCurrentValue5] = useState('Good');
     const [selectedTheme, setSelectedTheme] = useState('default');
 
     useEffect(() => {
@@ -45,16 +49,20 @@ const Page = () => {
         setCurrentValue(val);
     }
 
-    const onChange2 = (val:string) => {
-        setCurrentValue2(val);
-    }
+    // const onChange2 = (val:string) => {
+    //     setCurrentValue2(val);
+    // }
 
-    const onChange3 = (val:string) => {
-        setCurrentValue3(val);
-    }
+    // const onChange3 = (val:string) => {
+    //     setCurrentValue3(val);
+    // }
 
-    const onChange4 = (val:string) => {
-        setCurrentValue4(val);
+    // const onChange4 = (val:string) => {
+    //     setCurrentValue4(val);
+    // }
+
+    const onChange5 = (val:string) => {
+        setCurrentValue5(val);
     }
 
     return (
@@ -78,7 +86,7 @@ const Page = () => {
                 <div>{currentValue}</div>
             </div>
             <hr/>
-            <div className='mt-2'>
+            {/* <div className='mt-2'>
                 <MultiStateRadioBox 
                     dataSource={['Good', 'Bad', 'Avg','Worst']} 
                     value={currentValue2} 
@@ -113,6 +121,32 @@ const Page = () => {
                     }}
                     Skin={wallSwitch}
                 />
+            </div>
+            <hr/> */}
+            <div className='mt-2'>
+                <RadioLogic 
+                    dataSource={['Good', 'Bad', 'Avg','Worst']} 
+                    defaultValue={currentValue5} 
+                    name={'test5'} 
+                    actions={{
+                        onChange:onChange5
+                    }}
+                    Skin={RadioUiSvg}
+                />
+                <div>{currentValue5}</div>
+            </div>
+            <hr/>
+            <div className='mt-2'>
+                <RadioLogic 
+                    dataSource={['Good', 'Bad', 'Avg','Worst']} 
+                    defaultValue={currentValue5} 
+                    name={'test5'} 
+                    actions={{
+                        onChange:onChange5
+                    }}
+                    Skin={RadioUiHtml}
+                />
+                <div>{currentValue5}</div>
             </div>
         </div>
     )
