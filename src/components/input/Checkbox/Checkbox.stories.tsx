@@ -1,58 +1,73 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { fn } from '@storybook/test';
 import Checkbox from './Checkbox.logic';
+import { checkboxUiTrue } from './Checkbox.ui';
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
+
 export default {
   title: 'Example/Checkbox',
   component: Checkbox,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
-  // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  // Use `fn` to spy on the onChange arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-  args: { onChange: fn() },
+  args: {
+    id: 'checkbox1',
+    checked: false,
+    size: 'md',
+    onChange: console.log('Checkbox toggled'),
+    Skin: checkboxUiTrue,
+  },
 };
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default = {
   args: {
-    label: 'Checkbox',
+    id: 'checkbox1',
     checked: false,
-    size: 'medium', // Assuming you support size props
-    color: 'black', // Optional color prop
+    size: 'md',
+    onChange: console.log('Checkbox toggled'),
+    Skin: checkboxUiTrue,
   },
 };
 
 export const Checked = {
   args: {
-    label: 'Checkbox',
+    id: 'checkbox1',
     checked: true,
-    size: 'medium',
-    color: 'green',
+    size: 'md',
+    onChange: console.log('Checkbox toggled'),
+    Skin: checkboxUiTrue,
   },
 };
 
 export const Small = {
   args: {
-    label: 'Small Checkbox',
+    id: 'checkbox1',
     checked: false,
-    size: 'small',
-    color: 'blue',
+    size: 'sm',
+    onChange: console.log('Checkbox toggled'),
+    Skin: checkboxUiTrue,
   },
 };
 
 export const Large = {
   args: {
-    label: 'Large Checkbox',
+    id: 'checkbox1',
     checked: false,
-    size: 'large',
-    color: 'red',
+    size: 'lg',
+    onChange: console.log('Checkbox toggled'),
+    Skin: checkboxUiTrue,
+  },
+};
+
+export const ExtraLarge = {
+  args: {
+    id: 'checkbox1',
+    checked: false,
+    size: 'xl',
+    onChange: console.log('Checkbox toggled'),
+    Skin: checkboxUiTrue,
   },
 };
