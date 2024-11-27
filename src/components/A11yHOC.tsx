@@ -1,7 +1,7 @@
 import React, {ComponentType} from "react"
 import {IA11y} from "@/interfaces/IA11y"
-import {IButton} from "@/app/button-1/_utils/interface/IButton"
-import {Button} from "@/app/button-1/_utils/Button"
+import {IButton} from "@/app/button-sample-2/_utils/interface/IButton"
+import {Button} from "@/app/button-sample-2/_utils/Button"
 
 type WithA11yProps = IButton & { a11yProps?: Partial<IA11y> }
 

@@ -1,6 +1,6 @@
 import React, {ComponentType, useRef, useState} from "react"
 import {IResize} from "@/interfaces/IResize"
-import {IButton} from "@/app/button-1/_utils/interface/IButton"
+import {IButton} from "@/app/button-sample-2/_utils/interface/IButton"
 
 type resizeProps = IButton
 

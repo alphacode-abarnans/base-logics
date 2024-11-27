@@ -1,6 +1,8 @@
 "use client"
 
-import Button from "./_utils/Button"
+
+import {Button, SkinProps} from "@/components/button/Button.logic"
+import {ButtonSkin1, ButtonSkin2} from "@/components/button/Button.ui";
 
 const ButtonExample = () => {
     const handleOnClick = () => {
@@ -17,39 +19,65 @@ const ButtonExample = () => {
         <div className="m-4">
             <h1 className="mb-5 text-2xl text-gray-700 font-bold">Button Variants</h1>
 
+            <div className="flex gap-4">
             <Button
                 action={{
                     onClick: handleOnClick,
                     onHover: handleOnHover,
                     onRightClick: handleOnRightClick
                 }}
-                skin={<ButtonSkin1/>}
+                Skin={ButtonSkin1}
                 disabled={false}
+                id="button-1"
             />
 
-            <Button
-                action={{
-                    onClick: handleOnClick,
-                    onHover: handleOnHover,
-                    onRightClick: handleOnRightClick
-                }}
-                skin={<ButtonSkin1/>}
-                disabled={true}
-                loading={{
-                    isLoading: true,
-                    skin: <span className="rounded-md bg-gray-200 py-2 px-4 font-medium text-gray-800 hover:bg-gray-300">Loading...</span>,
-                    direction: "replace"
-                }}
-            />
+                <Button
+                    action={{
+                        onClick: handleOnClick,
+                        onHover: handleOnHover,
+                        onRightClick: handleOnRightClick
+                    }}
+                    Skin={ButtonSkin2}
+                    disabled={false}
+                    id="button-2"
+                />
+
+                <Button
+                    action={{
+                        onClick: handleOnClick,
+                        onHover: handleOnHover,
+                        onRightClick: handleOnRightClick
+                    }}
+                    Skin={ButtonSkin2}
+                    disabled={true}
+                    id="button-3"
+                />
+
+                <Button
+                    action={{
+                        onClick: handleOnClick,
+                        onHover: handleOnHover,
+                        onRightClick: handleOnRightClick
+                    }}
+                    Skin={ButtonSkin2}
+                    disabled={false}
+                    id="button-4"
+                    loading={{isLoading:true, direction:"replace", skin:"Loading..." }}
+                />
+
+                <Button
+                    action={{
+                        onClick: handleOnClick,
+                        onHover: handleOnHover,
+                        onRightClick: handleOnRightClick
+                    }}
+                    Skin={ButtonSkin2}
+                    disabled={false}
+                    id="button-5"
+                    loading={{isLoading:true, direction:"start", skin:"Loading... " }}
+                />
+            </div>
         </div>
-    )
-}
-
-const ButtonSkin1 = () => {
-    return (
-        <span className="mx-2 rounded-md bg-gray-200 py-2 px-4 font-medium text-gray-800 hover:bg-gray-300">
-            Button 1
-        </span>
     )
 }
 

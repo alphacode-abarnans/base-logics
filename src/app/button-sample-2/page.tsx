@@ -1,6 +1,6 @@
 "use client"
 
-import {SkinProps} from "@/app/button-1/_utils/interface/IButton"
+import {SkinProps} from "@/app/button-sample-2/_utils/interface/IButton"
 import {Button} from "./_utils/Button"
 import A11yButton from "@/components/A11yHOC"
 import resizeComponent from "@/components/Resize"
@@ -16,7 +16,7 @@ const ButtonExample = () => {
         console.log("Button right clicked!")
     }
 
-    const Rsdf = resizeComponent(Button, {})
+    const ResizeHoc = resizeComponent(Button, {})
 
     return (
         <div className="m-4">
@@ -198,8 +198,8 @@ const ButtonExample = () => {
             </div>
 
             <h1 className="mt-20 mb-5 text-2xl text-gray-700 font-bold">Resizable Button Variants</h1>
-            <div className="flex gap-5">
-                <Rsdf
+            <div className="flex gap-5 mb-96">
+                <ResizeHoc
                     action={{
                         onClick: handleOnClick,
                         onHover: handleOnHover,
@@ -210,13 +210,13 @@ const ButtonExample = () => {
                     disabled={false}
                 />
 
-                <Rsdf
+                <ResizeHoc
                     action={{
                         onClick: handleOnClick,
                         onHover: handleOnHover,
                         onRightClick: handleOnRightClick
                     }}
-                    id="resize-button-1"
+                    id="resize-button-2"
                     Skin={ButtonSkin4}
                     disabled={false}
                 />
@@ -228,7 +228,7 @@ const ButtonExample = () => {
 const ButtonSkin1 = ({disabled, loading}: SkinProps) => {
     return (
         <div
-            className={`rounded-md bg-gray-200 py-2 px-4 font-medium text-gray-800 ${disabled ? "cursor-default" : "cursor-pointer hover:bg-gray-300"}`}>
+            className={`rounded-md bg-gray-200 py-2 px-4 font-medium text-gray-800 ${disabled ? "cursor-default opacity-60" : "cursor-pointer hover:bg-gray-300"}`}>
             {loading?.isLoading && loading.direction === "start" && loading.skin}
             {loading?.isLoading && loading.direction === "replace" && loading.skin}
             {(loading?.isLoading && (loading.direction === "start" || loading.direction === "end") || !loading?.isLoading) && "Submit"}
