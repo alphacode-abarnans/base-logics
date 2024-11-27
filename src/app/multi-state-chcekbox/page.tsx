@@ -7,8 +7,9 @@ import { MultiStateButton } from './_utils/Skins';
 import defaultTheme from './../../../default-theme.json';
 import { useConfig } from '@/context/ThemeContext';
 import { replacePlaceholders } from '@/services/StyleService';
-import RadioLogic from '@/components/input/Radio/Radio.logic';
-import {RadioUiHtml, RadioUiSvg} from '@/components/input/Radio/Radio.ui';
+import { Radio, RadioChoice, RadioGroup } from '@/components/input/Radio/Radio.logic';
+import {RadioUiHtml, RadioUiSvg, RadioUiSvg2} from '@/components/input/Radio/Radio.ui';
+import { rattingDummyData } from './_utils/dummyData';
 
 const Page = () => {
     const config = useConfig();
@@ -16,7 +17,7 @@ const Page = () => {
     // const [currentValue2, setCurrentValue2] = useState('Good');
     // const [currentValue3, setCurrentValue3] = useState('checked');
     // const [currentValue4, setCurrentValue4] = useState('checked');
-    const [currentValue5, setCurrentValue5] = useState('Good');
+    const [currentValue5, setCurrentValue5] = useState({ id : 1, lbl : "Good", val : "good" });
     const [selectedTheme, setSelectedTheme] = useState('default');
 
     useEffect(() => {
@@ -61,7 +62,9 @@ const Page = () => {
     //     setCurrentValue4(val);
     // }
 
-    const onChange5 = (val:string) => {
+    const onChange5 = (val:any) => {
+        console.log(val,"valvalvalval");
+        
         setCurrentValue5(val);
     }
 
@@ -124,30 +127,40 @@ const Page = () => {
             </div>
             <hr/> */}
             <div className='mt-2'>
-                <RadioLogic 
-                    dataSource={['Good', 'Bad', 'Avg','Worst']} 
-                    defaultValue={currentValue5} 
-                    name={'test5'} 
-                    actions={{
-                        onChange:onChange5
-                    }}
-                    Skin={RadioUiSvg}
+                <RadioChoice 
+                    dataSource={rattingDummyData}
+                    defaultValue={currentValue5}
+                    name={'test5'}
+                    actions={{ onChange: onChange5 }}
+                    size='md'
+                    Renderer={RadioUiSvg} 
+                    resolver={function (val: any): { value: string; label: string; key : string} {
+                        return { value: val?.val, label: val?.lbl, key: val?.id }
+                    }}                
                 />
-                <div>{currentValue5}</div>
+                <div>{currentValue5?.lbl}</div>
             </div>
             <hr/>
             <div className='mt-2'>
-                <RadioLogic 
-                    dataSource={['Good', 'Bad', 'Avg','Worst']} 
+                <RadioChoice 
+                    dataSource={rattingDummyData} 
                     defaultValue={currentValue5} 
                     name={'test5'} 
                     actions={{
                         onChange:onChange5
                     }}
-                    Skin={RadioUiHtml}
+                    size='sm'
+                    Renderer={RadioUiHtml}
+                    resolver={function (val: any): { value: string; label: string; key : string} {
+                        return { value: val?.val, label: val?.lbl, key: val?.id }
+                    }} 
                 />
-                <div>{currentValue5}</div>
+                <div>{currentValue5?.lbl}</div>
             </div>
+            <RadioGroup size={'xl'} DefaultRenderer={RadioUiSvg2}>
+                <Radio key={'1'} name={'radio-btn'} value={'good'} label={'Good'}/>
+                <Radio key={'2'} name={'radio-btn'} value={'bad'} label={'Bad'}/>
+            </RadioGroup>
         </div>
     )
 }
