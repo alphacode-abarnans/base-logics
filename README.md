@@ -1,19 +1,21 @@
 # Alpha Elements
+
 ## Description
-    
+
 It's a React library built as part of the design system for the "KOMODO" platform.
 
 ### How to install
 
-- Go to the Alpha Elements Repository in Github [https://github.com/AlphaCode-Technologies/alpha-elements](...)
-- Set your SSH key 
-- Clone it in your local 
-- Use pnpm to run this project..
-- It will require node js version 22.11 & nvm version ^0.39.0
+- Set your SSH key to github
+- Go to the Alpha Elements Repository in Github
+- Clone it in your dev machine
+- After initial open on the VScode it will recommend some extension to make the development easier please install them. you can check it on `.vscode/extensions.json`
+- The project require node js version 22.11.0
+- Use pnpm to install dependency and run this project
 
-### How to setup the SSH 
+### How to setup the SSH
 
-- for Windows 
+- for Windows
   - Goto your cmd then type `ssh-keygen`
   - It will save your key in a specific folder the file name will like id_rsa.pub
   - Goto your github account in the settings option you have an option to update your ssh key info copy & paste your key there.
@@ -31,30 +33,102 @@ It's a React library built as part of the design system for the "KOMODO" platfor
   - Enter a passphrase
   - key will be created in the ~/.ssh directory you can copy and paste it in your github account
 
-
 ### How to run
-In this project we are using `pnpm`, so need to install pnpm then you can run it in local.
-In here you can ignore run in usual commands
+
+In this project we are using `node` & `pnpm`, so need to install them then only you can run it in dev machine.
+
+- install nvm
+  - for mac (ref: <https://sukiphan.medium.com/how-to-install-nvm-node-version-manager-on-macos-d9fe432cc7db>)
+
+    ```bash
+      brew install nvm
+      nvm --version
+    ```
+
+  - for windows (ref : <https://github.com/coreybutler/nvm-windows#readme>)
+
+  - for linux (ref : <https://codedamn.com/news/nodejs/nvm-installation-setup-guide>)
+
+    ```bash
+      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+      nvm --version
+    ```
+
+- install node (v22.11.0)
+
+  ```bash
+    nvm install 22.11.0
+  ```
+
+- install pnpm
+  - for windows
+
+    ```bash
+      nvm pnpm install
+    ```
+
+  - for mac/linux
+
+    ```bash
+      nvm pnpm install
+      corepack enable
+      corepack prepare pnpm@latest --activate
+    ```
+
+- install project dependency
+
+  ```bash
+    pnpm install
+  ```
+
+- run project
+
+  ```bash
+    pnpm dev
+  ```
+
+- After running the project you can get more option by pressing h + enter for extra option
+- press o + enter to Open with your browser to see the result.
+
+### How to build
+
+- build project
+
+  ```bash
+    pnpm build
+  ```
+
+- to run the build file
+  
+  ```bash
+    pnpm dev:preview
+  ```
+
+### How to run test
+
+- test project
+  - option 1 (you can able to check the test cases and results by click the icon named testing in code editor)
+
+    ```bash
+      pnpm test
+    ```
+
+  - option 2 (UI for testing it will open on browser with test cases and results)
+
+    ```bash
+      pnpm test:ui
+    ```
+
+### How to run storybook
 
 ```bash
-# to install pnpm
-nvm pnpm install
-# to change the node js package management
-corepack enable pnpm
-# to run
-pnpm dev
+  pnpm storybook
 ```
-after running the project you can get more option by pressing h + enter for extra option
-
-press o + enter to Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-you can run the test by pnpm test
 
 ### Extra integrations
+
 - Storybook (8.4.5)
   - it's for documenting the elements with customizable stylings.
-  - to run it give the command as `pnpm storybook`.
-  - it will open in separate hosting address.
 - Husky (9.1.7)
   - it's for code validations and automating the build procedures.
 - Vite (8.4.5)
