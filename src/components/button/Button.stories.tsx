@@ -1,73 +1,115 @@
 /* eslint-disable import/no-anonymous-default-export */
-import Checkbox from './Checkbox.logic';
-import { checkboxUiTrue } from './Checkbox.ui';
-
+import {Button} from "@/components/button/Button.logic";
+import {buttonSkin1, buttonSkin2, loadingButtonSkin1} from "@/components/button/Button.ui";
 
 export default {
-  title: 'Example/Checkbox',
-  component: Checkbox,
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-  args: {
-    id: 'checkbox1',
-    checked: false,
-    size: 'md',
-    onChange: console.log('Checkbox toggled'),
-    Skin: checkboxUiTrue,
-  },
+    title: "Example/Button",
+    component: Button,
+    parameters: {
+        layout: "centered",
+    },
+    tags: ["autodocs"],
+    argTypes: {
+        "loading.isLoading": {
+            control: "boolean",
+        },
+        "loading.direction": {
+            control: {type: "radio"},
+            options: ["start", "end", "replace"],
+        },
+        "loading.size": {
+            control: {type: "radio"},
+            options: ["sm", "md", "lg","xl"],
+        },
+    },
+    args: {
+        id: "button-1",
+        disabled: false,
+        content: "Button",
+        size: "sm",
+        action: {
+            onChange: console.log("Button clicked!"),
+            onHover: console.log("Button hovered!"),
+            onRightClick: console.log("Button right clicked!"),
+        },
+        Skin: buttonSkin1,
+        loading: {
+            isLoading: false,
+            direction: "end",
+            size: "md",
+        },
+    },
 };
 
 export const Default = {
-  args: {
-    id: 'checkbox1',
-    checked: false,
-    size: 'md',
-    onChange: console.log('Checkbox toggled'),
-    Skin: checkboxUiTrue,
-  },
+    args: {
+        id: "button-1",
+        disabled: false,
+        content: "Button",
+        size: "sm",
+        action: {
+            onChange: console.log("Button clicked!"),
+            onHover: console.log("Button hovered!"),
+            onRightClick: console.log("Button right clicked!"),
+        },
+        Skin: buttonSkin1,
+    },
 };
 
-export const Checked = {
-  args: {
-    id: 'checkbox1',
-    checked: true,
-    size: 'md',
-    onChange: console.log('Checkbox toggled'),
-    Skin: checkboxUiTrue,
-  },
+export const Skin1 = {
+    args: {
+        id: "button-1",
+        disabled: false,
+        content: "Button",
+        size: "sm",
+        action: {
+            onChange: console.log("Button clicked!"),
+            onHover: console.log("Button hovered!"),
+            onRightClick: console.log("Button right clicked!"),
+        },
+        Skin: buttonSkin2,
+    },
 };
 
-export const Small = {
-  args: {
-    id: 'checkbox1',
-    checked: false,
-    size: 'sm',
-    onChange: console.log('Checkbox toggled'),
-    Skin: checkboxUiTrue,
-  },
+export const Loading = {
+    args: {
+        id: "button-1",
+        disabled: false,
+        content: "Button",
+        size: "sm",
+        action: {
+            onChange: console.log("Button clicked!"),
+            onHover: console.log("Button hovered!"),
+            onRightClick: console.log("Button right clicked!"),
+        },
+        Skin: buttonSkin2,
+        loading: {
+            isLoading: true,
+            direction: "start",
+            size: "lg",
+        },
+        loadingContent: "Loading...",
+    },
 };
 
-export const Large = {
-  args: {
-    id: 'checkbox1',
-    checked: false,
-    size: 'lg',
-    onChange: console.log('Checkbox toggled'),
-    Skin: checkboxUiTrue,
-  },
-};
-
-export const ExtraLarge = {
-  args: {
-    id: 'checkbox1',
-    checked: false,
-    size: 'xl',
-    onChange: console.log('Checkbox toggled'),
-    Skin: checkboxUiTrue,
-  },
+export const LoadingWithSkin = {
+    args: {
+        id: "button-1",
+        disabled: false,
+        content: "Button",
+        size: "sm",
+        action: {
+            onChange: console.log("Button clicked!"),
+            onHover: console.log("Button hovered!"),
+            onRightClick: console.log("Button right clicked!"),
+        },
+        Skin: buttonSkin2,
+        loading: {
+            isLoading: true,
+            direction: "start",
+            size: "lg",
+        },
+        loadingContent: "Loading...",
+        LoadingSkin: loadingButtonSkin1
+    },
 };

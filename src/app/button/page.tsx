@@ -1,8 +1,8 @@
 "use client"
 
 
-import {Button, SkinProps} from "@/components/button/Button.logic"
-import {ButtonSkin1, ButtonSkin2} from "@/components/button/Button.ui";
+import {Button} from "@/components/button/Button.logic"
+import {buttonSkin1, buttonSkin2, loadingButtonSkin1} from "@/components/button/Button.ui"
 
 const ButtonExample = () => {
     const handleOnClick = () => {
@@ -20,26 +20,32 @@ const ButtonExample = () => {
             <h1 className="mb-5 text-2xl text-gray-700 font-bold">Button Variants</h1>
 
             <div className="flex gap-4">
-            <Button
-                action={{
-                    onClick: handleOnClick,
-                    onHover: handleOnHover,
-                    onRightClick: handleOnRightClick
-                }}
-                Skin={ButtonSkin1}
-                disabled={false}
-                id="button-1"
-            />
-
                 <Button
                     action={{
                         onClick: handleOnClick,
                         onHover: handleOnHover,
                         onRightClick: handleOnRightClick
                     }}
-                    Skin={ButtonSkin2}
+                    Skin={buttonSkin1}
+                    disabled={false}
+                    id="button-1"
+                    content="Submit"
+                    size="lg"
+                />
+            </div>
+
+            <div className="mt-20 flex gap-4">
+                <Button
+                    action={{
+                        onClick: handleOnClick,
+                        onHover: handleOnHover,
+                        onRightClick: handleOnRightClick
+                    }}
+                    Skin={buttonSkin2}
                     disabled={false}
                     id="button-2"
+                    content="Button SM"
+                    size="sm"
                 />
 
                 <Button
@@ -48,9 +54,11 @@ const ButtonExample = () => {
                         onHover: handleOnHover,
                         onRightClick: handleOnRightClick
                     }}
-                    Skin={ButtonSkin2}
+                    Skin={buttonSkin2}
                     disabled={true}
                     id="button-3"
+                    content="Button MD"
+                    size="md"
                 />
 
                 <Button
@@ -59,10 +67,11 @@ const ButtonExample = () => {
                         onHover: handleOnHover,
                         onRightClick: handleOnRightClick
                     }}
-                    Skin={ButtonSkin2}
+                    Skin={buttonSkin2}
                     disabled={false}
                     id="button-4"
-                    loading={{isLoading:true, direction:"replace", skin:"Loading..." }}
+                    content="Button LG"
+                    size="lg"
                 />
 
                 <Button
@@ -71,10 +80,127 @@ const ButtonExample = () => {
                         onHover: handleOnHover,
                         onRightClick: handleOnRightClick
                     }}
-                    Skin={ButtonSkin2}
+                    Skin={buttonSkin2}
                     disabled={false}
                     id="button-5"
-                    loading={{isLoading:true, direction:"start", skin:"Loading... " }}
+                    content="Button XL"
+                    size="xl"
+                />
+            </div>
+
+            <div className="mt-20 flex gap-4">
+                <Button
+                    action={{
+                        onClick: handleOnClick,
+                        onHover: handleOnHover,
+                        onRightClick: handleOnRightClick
+                    }}
+                    Skin={buttonSkin2}
+                    disabled={false}
+                    id="button-5"
+                    content="Button"
+                    size="lg"
+                    loading={{isLoading: true, direction: "start", size: "lg"}}
+                    LoadingSkin={buttonSkin2}
+                    loadingContent="Loading... "
+                />
+
+                <Button
+                    action={{
+                        onClick: handleOnClick,
+                        onHover: handleOnHover,
+                        onRightClick: handleOnRightClick
+                    }}
+                    Skin={buttonSkin2}
+                    disabled={false}
+                    id="button-4"
+                    content="Button"
+                    size="lg"
+                    loading={{isLoading: true, direction: "end", size: "lg"}}
+                    LoadingSkin={buttonSkin2}
+                    loadingContent=" Loading..."
+                />
+
+                <Button
+                    action={{
+                        onClick: handleOnClick,
+                        onHover: handleOnHover,
+                        onRightClick: handleOnRightClick
+                    }}
+                    Skin={buttonSkin2}
+                    disabled={false}
+                    id="button-4"
+                    content="Button"
+                    size="lg"
+                    loading={{isLoading: true, direction: "replace", size: "lg"}}
+                    LoadingSkin={buttonSkin2}
+                    loadingContent="Loading..."
+                />
+
+                <Button
+                    action={{
+                        onClick: handleOnClick,
+                        onHover: handleOnHover,
+                        onRightClick: handleOnRightClick
+                    }}
+                    Skin={buttonSkin2}
+                    disabled={true}
+                    id="button-5"
+                    content="Button"
+                    size="lg"
+                    loading={{isLoading: true, direction: "start", size: "lg"}}
+                    LoadingSkin={buttonSkin2}
+                    loadingContent="Disabled Loading "
+                />
+            </div>
+
+            <div className="mt-20 flex gap-4">
+                <Button
+                    action={{
+                        onClick: handleOnClick,
+                        onHover: handleOnHover,
+                        onRightClick: handleOnRightClick
+                    }}
+                    Skin={buttonSkin2}
+                    disabled={false}
+                    id="button-5"
+                    content="Button"
+                    size="lg"
+                    loading={{isLoading: true, direction: "start", size: "lg"}}
+                    LoadingSkin={loadingButtonSkin1}
+                    loadingContent="Loading... "
+                />
+
+                <Button
+                    action={{
+                        onClick: handleOnClick,
+                        onHover: handleOnHover,
+                        onRightClick: handleOnRightClick
+                    }}
+                    Skin={buttonSkin2}
+                    disabled={false}
+                    id="button-4"
+                    content="Button"
+                    size="lg"
+                    loading={{isLoading: true, direction: "end", size: "lg"}}
+                    LoadingSkin={loadingButtonSkin1}
+                    loadingContent=" Loading..."
+                />
+
+                <Button
+                    action={{
+                        onClick: handleOnClick,
+                        onHover: handleOnHover,
+                        onRightClick: handleOnRightClick
+                    }}
+                    Skin={buttonSkin2}
+                    disabled={false}
+                    id="button-4"
+                    content="Button"
+                    size="lg"
+                    loading={{isLoading: true, direction: "replace", size: "lg"}}
+                    LoadingSkin={loadingButtonSkin1}
+                    loadingContent="Loading..."
                 />
             </div>
         </div>
